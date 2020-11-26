@@ -1435,6 +1435,7 @@ void *CSharpLanguage::alloc_instance_binding_data(Object *p_object) {
 }
 
 Map<Object *, CSharpScriptBinding>::Element *CSharpLanguage::insert_script_binding(Object *p_object, const CSharpScriptBinding &p_script_binding) {
+	MutexLock lock(language_bind_mutex);
 	return script_bindings.insert(p_object, p_script_binding);
 }
 
